@@ -64,43 +64,43 @@ npm run dev
 主要目录结构如下：
 
 │
-├─server 			//后端目录
-│  ├─app.js			//后端入口
+├─server            //后端目录
+│  ├─app.js         //后端入口
 │  ├─database.js    //数据库初始化文件
-│  ├─db.js		    //封装数据库操作文件
-│  ├─public			//后台静态目录
+│  ├─db.js          //封装数据库操作文件
+│  ├─public         //后台静态目录
 │  │  ├─file
 │  │  ├─img
 │  │  ├─file
 │  │  ├─img
 │  │  ├─stylesheets
-│  │  ├─ueditor		//ueditor相关的配置文件
+│  │  ├─ueditor     //ueditor相关的配置文件
 │  │  └─video
 │  ├─routes
-│  │  ├─frontend	//前端接口
-│  │  ├─backend		//后端接口
-│  │  ├─user	    //用户接口				
-│  └─util		    //后端共用方法
-├─src			    //前端目录
+│  │  ├─frontend    //前端接口
+│  │  ├─backend     //后端接口
+│  │  ├─user        //用户接口				
+│  └─util           //后端共用方法
+├─src               //前端目录
 │  ├─assets				
-│  ├─components		//全局公用组件
-│  ├─fetch			//封装axios请求		
-│  ├─mock		    //mock.js生成模拟数据（用于前后端分离调试接口阶段）
-│  ├─router			//vue-router路由控制
-│  ├─store			//vuex 状态管理
-│  ├─util			//全局共用方法
+│  ├─components     //全局公用组件
+│  ├─fetch          //封装axios请求		
+│  ├─mock           //mock.js生成模拟数据（用于前后端分离调试接口阶段）
+│  ├─router         //vue-router路由控制
+│  ├─store          //vuex 状态管理
+│  ├─util           //全局共用方法
 │  └─views			
 │      ├─aboutMe		
-│      ├─admin		//后台view层
+│      ├─admin      //后台view层
 │      ├─file
 │      ├─home
 │      ├─music
 │      ├─myApp
-│      ├─nav		//导航栏
+│      ├─nav        //导航栏
 │      ├─search
 │      ├─sense
 │      └─tech   
-└─static			//静态文件
+└─static            //静态文件
     ├─css
     ├─img
     └─UE
