@@ -13,6 +13,7 @@ router.post('/login',(req,res)=>{
   let account=req.body.account;
   //对密码进行加密验证
   let password=util.encrypt(req.body.password);
+  console.log(password);
   //生成一个token
   let token=util.encodeJwt();
   let sql=db.login(account,password);
