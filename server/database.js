@@ -20,7 +20,7 @@ let createArticle=`create table if not exists article(
     category varchar(20) not null default '技术文章' comment '文章分类',
     tags varchar(100) not null default '' comment '文章标签',
     state varchar(10) not null default '草稿' comment '文章状态',
-    summary varchar(500) not null default '' comment '文章简介',
+    summary text not null comment '文章简介',
     content text not null comment '文章内容'
 )charset=utf8 engine=myisam comment '文章简要信息表';`;
 
