@@ -41,12 +41,12 @@
 
             <div class="summary">
                 <p>文章简介：</p>
-                <textarea v-model="passage.summary"></textarea>
+                <ueditor  ref="ue1" :id="ue1" :config="config1" :content="passage.summary" v-model="passage.summary"></ueditor>
             </div>
 
             <div class="passageContext">
                 <p>文章内容：</p>
-                <ueditor ref="ue" :content="passage.content" v-model="passage.content"></ueditor>
+                <ueditor ref="ue2" :id="ue2" :config="config2" :content="passage.content" v-model="passage.content"></ueditor>
             </div>
             <p class="save"><button class="saveBtn" @click="savePassage">保存修改</button></p>
         </div>
@@ -66,6 +66,16 @@
         },
         data(){
             return{
+                ue1:'ue1',
+                ue2:'ue2',
+                config1:{
+                    initialFrameWidth: null,
+                    initialFrameHeight: 300
+                },
+                config2:{
+                    initialFrameWidth: null,
+                    initialFrameHeight: 500
+                },
                 passage:{
                     title:'',
                     time:util.getCurrentDate(),//从util文件夹引入的公共方法获取当前时间
@@ -94,7 +104,8 @@
                         console.log(res.data[0]);
                         this.passage=res.data[0];
                         //再拿到数据之后再进行ueditor的初始化操作，否则会出错
-                        this.$refs.ue.initEditor();
+                        this.$refs.ue1.initEditor();
+                        this.$refs.ue2.initEditor();
                         break;
                         case '400':
                         console.log('请求数据错误！');
@@ -105,14 +116,16 @@
                 })
             },
             newArticle(){
-                console.log(this.$refs.ue);
-                this.$refs.ue.initEditor();
+                console.log(this.$refs.ue1);
+                this.$refs.ue1.initEditor();
+                this.$refs.ue2.initEditor();
             },
             savePassage(){
                 let r=confirm('确定更改吗？');
                 if(r==true){
                     //获取ueditor中的内容插入文章中
-                    this.passage.content=this.$refs.ue.getUEContent();
+                    this.passage.summary=this.$refs.ue1.getUEContent();
+                    this.passage.content=this.$refs.ue2.getUEContent();
                     //防止输入中文逗号，把中文逗号都转化为英文逗号
                     let reg=/，/g;
                     let tags=this.passage.tags;

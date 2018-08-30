@@ -1,24 +1,20 @@
 <template>
-    <script id="ue" type="text/plain"></script>
+    <script :id="id" type="text/plain"></script>
 </template>
 
 <script>
 export default {
     name:'ueditor',
-    props:['content'],
+    props:['content','id','config'],
     data(){
         return{
             //初始化一个editor
             editor:null,
-            config:{
-                initialFrameWidth: null,
-                initialFrameHeight: 500
-            },
             defaultMsg:''
         }
     },
     mounted(){
-
+        console.log('加载了');
     },
     //离开页面时销毁editor,以便下回进入时重新生成
     destroyed() {
@@ -27,7 +23,7 @@ export default {
     methods:{
         initEditor(){
             let that=this;
-            this.editor=UE.getEditor('ue',this.config);
+            this.editor=UE.getEditor(this.id,this.config);
             // 确保UE加载完成后，放入内容。
             this.editor.addListener("ready", function () {
                 //文章有内容时，放入内容
