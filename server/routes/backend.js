@@ -89,6 +89,32 @@ router.post('/delArticle',(req,res)=>{
     })
 })
 
+//获取所有文章评论接口
+router.get('/allComments',(req,res)=>{
+    let sql=db.getAllComments();
+     db.Query(sql).then(data=>{
+         console.log(data);
+         console.log('完成');
+         res.send({"code":"200","data":data});
+     },err=>{
+         res.send({"code":"400"});
+         console.log(err);
+     })
+})
+
+//文章评论删除接口
+router.post('/delComment',(req,res)=>{
+    let id=req.body.id;
+    let sql=db.delComment(id);
+    console.log(sql);
+    db.Query(sql).then(data=>{
+        res.send({"code":"200","data":data});
+    },err=>{
+        res.send({"code":"400"});
+        console.log(err);
+    })
+})
+
 // 文章状态改变接口
 router.post('/changeState',(req,res)=>{
     let id=req.body.id;

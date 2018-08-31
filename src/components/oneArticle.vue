@@ -16,7 +16,7 @@
 					<div class="tag" v-for="tag in passage.tags" @click="findTag(tag)" v-if="tag">
 						<span>{{tag}}</span>
 					</div>
-					<div class="share">
+					<div class="share"> 
 						<span class="iconfont icon-zanzhuanhuan0101" title="该功能待开发，别使劲点了！"></span>
 					</div>
 				</div>

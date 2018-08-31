@@ -237,7 +237,7 @@ let Query=( sql , ...params )=>{
         `;
         return sql;
     }
-    //获取评论
+    //获取单篇文章的评论
     let getComments=function(id){
         let sql=`
         select
@@ -251,6 +251,7 @@ let Query=( sql , ...params )=>{
         `;
         return sql;
     }
+
 
 // 后端sql语句
     //获取分类文章(完成)
@@ -334,7 +335,32 @@ let Query=( sql , ...params )=>{
         return sql;
     }
 
+    //获取所有文章的评论
+    let getAllComments=function(){
+        let sql=`
+        select
+            article.title,
+            comments.*
+        from
+            comments left join article
+        on
+            comments.articleId=article.id
+        order by
+            comments.time desc;
+        `;
+        return sql;
+    }
 
+    //删除单条评论
+    let delComment=function(id){
+        let sql=`
+        delete from
+            comments
+        where
+            id='${id}';
+        `;
+        return sql;
+    }
 
  module.exports={
     Query,
@@ -360,4 +386,6 @@ let Query=( sql , ...params )=>{
     searchPassageFront,
     makeComment,
     getComments,
+    getAllComments,
+    delComment,
  }

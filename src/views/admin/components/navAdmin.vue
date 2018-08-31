@@ -5,6 +5,7 @@
             <router-link to="/admin/techAdmin"><li>技术文章</li></router-link>
             <router-link to="/admin/musicAdmin"><li>音乐文章</li></router-link>
             <router-link to="/admin/senseAdmin"><li>感悟文章</li></router-link>
+            <router-link to="/admin/commentAdmin"><li>评论管理</li></router-link>
             <router-link to="/admin/meAdmin"><li>我的信息</li></router-link>
         </ul>
         <p class="logout" @click="logout">退出登录</p>

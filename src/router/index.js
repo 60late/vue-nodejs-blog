@@ -134,6 +134,13 @@ const routes=[
 					requireAuth: true,
 				},
 			},{
+				path:'commentAdmin',
+				name:'commentAdmin',
+				component:resolve=>require(['../views/admin/commentAdmin'],resolve),
+				meta: {
+					requireAuth: true,
+				},
+			},{
 				path:'modify/articleId=:id',
 				name:'modify',
 				component:resolve=>require(['../views/admin/modify'],resolve),

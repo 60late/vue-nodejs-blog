@@ -109,6 +109,17 @@ export default {
 		}
 		return fetchPost('/backend/delArticle',params);
 	},
+	//后天获取所有评论的接口
+	allCommentsBack(){
+		return fetchGet('/backend/allComments')
+	},
+	//后台删除单挑评论的接口
+	delCommentBack(id){
+		let params={
+			id,
+		}
+		return fetchPost('/backend/delComment',params)
+	},
 	
 
 // 用户接口（部分前后台共用，所以单独出来）
