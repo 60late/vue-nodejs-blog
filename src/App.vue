@@ -6,7 +6,11 @@
 
 <script>
 export default {
-  name: 'App',
+	name: 'App',
+	created(){
+		//去掉首页loading
+		document.body.removeChild(document.getElementById('loading'));
+	}
 }
 </script>
 

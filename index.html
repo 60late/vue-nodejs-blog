@@ -6,9 +6,30 @@
     <title>Alphabet的个人博客</title>
     <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_658158_r2xcplbp1gm.css"/>
     <link type="favicon" rel="shortcut icon" href="./static/img/favicon.ico" />
+    <link rel="stylesheet" href="./static/css/loading.css">
   </head>
   <body>
+    <div id="loading">
+      <img src="./static/img/myImg.jpg" alt="alphabet的个人博客">
+      <div class="welcome">
+        蜗牛服务器努力加载中
+      </div>
+    </div>
+    <script>
+      let welcome=document.getElementsByClassName('welcome')[0];
+      console.log(welcome)
+      let words=welcome.innerText.split('');
+      console.log(words);
+      let len=words.length;
+      for(var i=0;i<len;i++){
+        if(i==0){
+          welcome.innerHTML='';
+        }
+        welcome.innerHTML+='<div class="single">'+words[i]+'</div>';
+      }
+    </script>
     <div id="app"></div>
     <!-- built files will be auto injected -->
   </body>
 </html>
+

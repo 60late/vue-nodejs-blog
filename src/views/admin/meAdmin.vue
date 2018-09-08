@@ -1,7 +1,31 @@
 <template>
     <div class="me">
         <div class="title">个人信息修改</div>
-        
+        <div class="content">
+            <div class="myInfo">
+                <div class="myName">
+                    <span>我的名字：</span>
+                    <input type="text" v-model="name"><br>
+                    <span>我的签名：</span>
+                    <input type="text" v-model="signature">
+                </div>
+
+                <div class="myHead">
+                    <input ref="uploadImg" type="file" accept="image/png,image/gif,image/jpeg" @change="previewImg">
+                    <img :src="imgsrc" alt="我的头像" @click.stop="activePreview">
+                    <p>点击图片更改头像</p>
+                </div>
+            </div>
+
+            <div class="myBrief">
+                <span>我的简介：</span>
+                <textarea v-model="breif"></textarea>
+            </div>
+
+            <div class="save">
+                <button class="saveBtn" @click="changeInfo">提交</button>
+            </div>
+        </div>
     </div>
 </template>
 
