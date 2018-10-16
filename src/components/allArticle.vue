@@ -124,6 +124,9 @@
 			hr{
 				margin: 15px 0;
 			}
+			/deep/ img{
+				max-width: 100%;
+			}
 			.bottom{
 				min-height: 30px;
 				line-height: 30px;
