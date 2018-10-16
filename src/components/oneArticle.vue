@@ -8,7 +8,7 @@
 					<span>{{passage.time}}</span>
 				</div>
 			</div>
-			<div class="content">
+			<div class="content" ref="content">
 				<p v-html="passage.content"></p>
 				<hr />
 				<div class="bottom">
@@ -63,7 +63,7 @@
 </template>
 <script>
 	import api from '../fetch/api.js'
-	
+	import util from '@/util/util'
 	export default{
 		name:'oneArticle',
 		props:['articleId'],
@@ -76,15 +76,24 @@
 				comments:[],
 				pre:'',
 				next:'',
+				lazyLoad:'',
 			}
 		},
 		created(){
 			//获取文章操作
 			this.getOneArticle();
 			this.getComments();
+			//由于移除事件监听必须指定函数名，因此需要用一个变量来进行中转
+			this.lazyLoad=util.throttle(this.handleLoad,200,300);
 		},
 		mounted(){
+			//添加懒加载滚动监听
+			window.addEventListener('scroll',this.lazyLoad);
 			this.testPreNext();
+		},
+		beforeDestroy(){
+			//移除懒加载监听
+			window.removeEventListener('scroll',this.lazyLoad);
 		},
 		methods:{
 			findTag(tag){
@@ -94,19 +103,41 @@
 				api.oneArticleFront(this.articleId).then(res=>{
 					switch(res.code){
 						case '200':
-							console.log(res.data);
+							console.log(res.data);    
 							this.passage=res.data;
 							//将标签分割
 							this.passage.tags=this.passage.tags.split(',');
+
+							//created钩子函数中接收到后台返回的文章内容，把所有src替换为data-src。
+							let reg=/<img src/g;
+							this.passage.content=this.passage.content.replace(reg,`<img data-src`);
+							//懒加载初始化，放在这个回调函数这里
+							this.$nextTick(() => {
+								this.handleLoad();
+							})
 							break;
 						case '400':
 							console.log('服务器炸了');
 							break;
 					}
-
 				},err=>{
 					console.log(err);
 				});
+			},
+			//懒加载的主体函数handleLoad
+			handleLoad(){
+				let list=this.$refs.content.getElementsByTagName("img");
+				for(let i=0,len=list.length;i<len;i++){
+					if(this.isInsight(list[i])){
+						list[i].src=list[i].getAttribute("data-src");
+					}
+				}
+			},
+			isInsight(el){
+				let bound = el.getBoundingClientRect();
+				let clientHeight = window.innerHeight;
+				//只考虑向下滚动加载
+				return bound.top <= clientHeight+100;
 			},
 			findTag(tag){
 				this.$router.push({name:'searchTag',params:{tagStr:tag}});
@@ -126,7 +157,6 @@
 							console.log('服务器炸了');
 							break;
 					}
-					console.log(res);
 				},err=>{	
 					console.log(err);
 				});
@@ -161,12 +191,10 @@
 				api.getCommentsFront(this.articleId).then(res=>{
 					switch(res.code){
 						case '200':
-							console.log(res.data);
 							this.comments=res.data;
 							this.comments.forEach(element=>{
 								element.imgSrc=this.randomImg();
 							})
-							console.log(this.comments.imgSrc);
 							break;
 						case '400':
 							console.log('服务器炸了');
@@ -197,7 +225,7 @@
 				//随机生成一张图片
 				let imgSrc='/static/img/img'+Math.floor(Math.random()*10)+'.jpg';
 				return imgSrc;
-			}
+			},
 		}
 		
 	}
