@@ -41,21 +41,56 @@
 </template>
 
 <script>
+	import util from '@/util/util'
 	export default{
 		name:'allArticle',
 		props:['passages','type'],
 		data(){
 			return{
+				lazyLoad:'',
 			}
 		},
+		created(){
+			console.log(this.passages)
+		},
 		mounted(){
+			this.lazyLoad=util.throttle(this.handleLoad,200,300);
+			// //添加懒加载滚动监听
+			window.addEventListener('scroll',this.lazyLoad);
+		},
+		beforeDestroy(){
+			//移除懒加载监听
+			window.removeEventListener('scroll',this.lazyLoad);
 		},
 		methods:{
 			findTag(tag){
 				this.$router.push({name:'searchTag',params:{tagStr:tag}});
+			},
+			handleLoad(){
+				let list=document.getElementsByClassName('rightContent')[0].getElementsByTagName('img');
+				for(let i=0,len=list.length;i<len;i++){
+					if(this.isInsight(list[i])){
+						list[i].src=list[i].getAttribute("data-src");
+					}
+				}
+				console.log(list);
+			},
+			isInsight(el){
+				let bound = el.getBoundingClientRect();
+				let clientHeight = window.innerHeight;
+				//只考虑向下滚动加载，当离视窗底部还有100距离时，就进行资源的加载
+				return bound.top <= clientHeight+100;
+			},
+		},
+		watch:{
+			//监听passages的值是否发生了变化，发生了变化则执行懒加载函数
+			passages:function(){
+				console.log('change')
+				this.$nextTick(() => {
+					this.handleLoad();
+				})
 			}
 		}
-		
 	}
 </script>
 

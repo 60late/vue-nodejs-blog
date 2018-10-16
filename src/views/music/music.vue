@@ -45,8 +45,10 @@
 		},
 		methods:{
 			parseTags(){
+				let reg=/<img src/g;
 				this.passages.forEach(element => {
 					element.tags=element.tags.split(',');
+					element.summary=element.summary.replace(reg,`<img data-src`);
 				});
 			}
 		}

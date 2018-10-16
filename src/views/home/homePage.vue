@@ -6,7 +6,7 @@
 <script>
 	import allArticle from '../../components/allArticle'
 	import api from '@/fetch/api'
-	
+
 	export default{
 		name:'homePage',
 		components:{
@@ -27,7 +27,7 @@
 				}
 			}
 		},
-		mounted(){
+		created(){
 			api.allArticleFront().then(res=>{
 				switch(res.code){
 					case '200':
@@ -46,8 +46,10 @@
 		methods:{
 			//homePage和其他几个music,tech等等的功能有重复，是暂时刻意重复的，因为后期可能每个模块功能不同，展示的效果不同，因此先预留出这个坑
 			parseTags(){
+				let reg=/<img src/g;
 				this.passages.forEach(element => {
 					element.tags=element.tags.split(',');
+					element.summary=element.summary.replace(reg,`<img data-src`);
 				});
 			}
 		}
