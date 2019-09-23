@@ -25,26 +25,19 @@ Alphabet的个人博客项目  Ver0.0
 
 # 项目运行
 ```
-前端
-//安装前端依赖(在最外层文件夹中运行npm install命令)
-npm install
+// 安装前后端依赖
+npm run init
 
-//开启前端dev服务
+// 开启前端服务
 npm run dev
 
-后端
-//切换到server文件夹安装后端依赖
-\server>npm install
-
-//初始化数据库内容
-\server>node database.js
-
-//运行后端服务器
-\server>node app.js
+// 开启后端服务
+cd server
+node app.js
 
 ```
 
-之后浏览器打开localhost:8080 即可访问
+之后浏览器打开localhost:8080 即可访问，如果依赖安装部分出现了问题，可以
 
 !!!注意!!!
 ----
@@ -100,8 +93,8 @@ ver 0.0版本完成了基础的文章展示，文章搜索，登录验证，文�
 │  ├─routes
 │  │  ├─frontend    //前端接口
 │  │  ├─backend     //后端接口
-│  │  ├─user        //用户接口				
-│  └─util           //后端共用方法
+│  │  ├─user        //用户登陆信息接口				
+│  └─util           //后端公用方法
 ├─src               //前端目录
 │  ├─assets				
 │  ├─components     //全局公用组件

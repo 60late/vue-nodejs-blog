@@ -18,9 +18,6 @@
 // 	]
 // });
 
-// export default{
-// 	allArticle,
-// }
 
 // Mock.mock('/api/all','post',allArticle);
 
@@ -140,3 +137,7 @@
 // 		}
 // 	]
 // });
+
+// export default {
+// 	allArticle,
+// }

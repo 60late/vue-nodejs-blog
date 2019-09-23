@@ -21,7 +21,7 @@ let usersRouter = require('./routes/users');
 // 实例化
 let app = express();
 app.listen(8081);
-console.log('now is listening port 8081……')
+console.log('后端服务已开启,现在监听8081端口...')
 
 //使用所需中间件
 app.use(cors());

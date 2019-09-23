@@ -171,13 +171,16 @@ export default {
                     flex: 1;
                     padding-bottom: 20px;
                     box-sizing: border-box;
+                    text-align: center;
                     input{
                         opacity: 0;
                         height: 0;
                     }
                     img{
+                        display: block;
                         width: 100px;
                         height:100px;
+                        margin:0 auto;
                         border-radius: 50%;
                         vertical-align: middle;
                         cursor: pointer;
