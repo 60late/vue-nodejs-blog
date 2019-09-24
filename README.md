@@ -37,7 +37,19 @@ node app.js
 
 ```
 
-之后浏览器打开localhost:8080 即可访问，如果依赖安装部分出现了问题，可以
+之后浏览器打开localhost:8080 即可访问，如果依赖安装部分出现了问题，可以使用以下命令手动处理：
+```
+// 安装前端依赖
+npm run install 
+
+// 安装后端依赖
+cd server 
+npm run install
+
+// 初始化数据库
+cd server
+node database.js
+```
 
 !!!注意!!!
 ----
