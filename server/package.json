@@ -12,7 +12,7 @@
     "crypto": "^1.0.1",
     "debug": "~2.6.9",
     "express": "~4.16.0",
-    "express-jwt": "^5.3.1",
+    "express-jwt": "^6.0.0",
     "http-errors": "~1.6.2",
     "jsonwebtoken": "^8.3.0",
     "morgan": "^1.9.1",
