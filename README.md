@@ -2,8 +2,6 @@
 
 Alphabet的个人博客项目  Ver0.0
 
-
-
 # 前言
 
 本项目是一个前后端分离的vue+nodejs博客项目，一路踩坑边学边用摸爬滚打终于初步上线
@@ -12,18 +10,18 @@ Alphabet的个人博客项目  Ver0.0
 
 由于书写时间仓促，该博客仍有许多需要改进的地方，我会保持对该博客项目的更新
 
-
 如果该博客对你有帮助，欢迎star和issue！
 
 ![a](https://i.loli.net/2018/08/21/5b7b891320be3.gif)
 
 # 技术栈
+
 + 前端：vue+vue-router+vuex+axios
 + 后端：node.js+express+mysql
 + 富文本编辑器：ueditor
 
-
 # 项目运行
+
 ```
 // 安装前后端依赖
 npm run init
@@ -38,12 +36,13 @@ node app.js
 ```
 
 之后浏览器打开localhost:8080 即可访问，如果依赖安装部分出现了问题，可以使用以下命令手动处理：
+
 ```
 // 安装前端依赖
-npm run install 
+npm run install
 
 // 安装后端依赖
-cd server 
+cd server
 npm run install
 
 // 初始化数据库
@@ -51,8 +50,9 @@ cd server
 node database.js
 ```
 
-!!!注意!!!
+!!!注意
 ----
+
 你的电脑上必须安装了mysql，并且mysql的相关配置如下才能进行正常运行。
 
 ```
@@ -60,25 +60,32 @@ node database.js
     user:'root',
     password:'',
 ```
+
 如果上面的配置和你电脑上的配置不同，那么你可以修改server/db.js 和server/database.js 里面的相应内容之后，再按照上述步骤启动项目
 
 后台管理页面的测试账号和密码都是:admin
 
 # 实现功能
-### ver 0.0 版本实现的功能（已实现）：
+
+### ver 0.0 版本实现的功能（已实现）
+
 ver 0.0版本完成了基础的文章展示，文章搜索，登录验证，文章管理等相关功能。
+
 + 前台展示（文章阅读、文章评论、上一篇下一篇文章，根据标签、关键词搜索相应文章）
 + 后台登录（使用Json web token验证登录状态,axios对返回信息拦截控制路由状态）
 + 后台管理（文章发布与设为草稿，文章修改，文章删除，评论管理，修改我的信息）
 
-### ver1.0 版本预期实现的功能（待办，短期）
+### ver1.0 版本预期实现的功能（待实现）
+
 + 全面优化网站性能，增加可用性和可维护性
 + 后台由express升级为koa2
 + 分享功能（QQ、微信、知乎等）
 + 分页功能
 + 前端界面效果的全面升级
++ 左边侧边栏可配置
 
-### ver2.0 版本预期实现的功能（待办，长期）
+### ver2.0 版本预期实现的功能（待实现）
+
 + 项目整体进行SSR（服务器端渲染）
 + 前台添加音乐播放功能
 + 后台添加"插入音乐功能”，将其整合在富文本编辑器中
@@ -105,18 +112,18 @@ ver 0.0版本完成了基础的文章展示，文章搜索，登录验证，文�
 │  ├─routes
 │  │  ├─frontend    //前端接口
 │  │  ├─backend     //后端接口
-│  │  ├─user        //用户登陆信息接口				
+│  │  ├─user        //用户登陆信息接口
 │  └─util           //后端公用方法
 ├─src               //前端目录
-│  ├─assets				
+│  ├─assets
 │  ├─components     //全局公用组件
-│  ├─fetch          //封装axios请求		
+│  ├─fetch          //封装axios请求  
 │  ├─mock           //mock.js生成模拟数据（用于前后端分离调试接口阶段）
 │  ├─router         //vue-router路由控制
 │  ├─store          //vuex 状态管理
 │  ├─util           //全局共用方法
-│  └─views			
-│      ├─aboutMe		
+│  └─views
+│      ├─aboutMe  
 │      ├─admin      //后台view层
 │      ├─file
 │      ├─home
@@ -125,48 +132,51 @@ ver 0.0版本完成了基础的文章展示，文章搜索，登录验证，文�
 │      ├─nav        //导航栏
 │      ├─search
 │      ├─sense
-│      └─tech   
+│      └─tech
 └─static            //静态文件
     ├─css
     ├─img
     └─UE
-    
-```
 
+```
 
 # 项目预览
 
 ## 前台页面
 
+地址： <http://localhost:8080/#/admin>
+
 #### 文章预览页面
+
 ![](https://i.loli.net/2018/08/30/5b87d5cbed6c4.png)
 
 #### 文章详情页
+
 ![](https://i.loli.net/2018/08/30/5b87d60846c78.png)
 
-
 ![](https://i.loli.net/2018/08/30/5b87d62b3878b.png)
-
 
 #### 站内搜索页
 
 ![](https://i.loli.net/2018/08/21/5b7b8e415378e.png)
 
-
 ## 后台管理页面
 
+地址： <http://localhost:8080/#/admin>
+账号密码都是 admin
+
 #### 文章管理列表
+
 ![](https://i.loli.net/2018/08/21/5b7b8f9734c20.png)
 
 #### 修改文章|创建新文章
+
 ![](https://i.loli.net/2018/08/30/5b87d65e8650d.png)
 
 #### 更改我的信息
 
 ![](https://i.loli.net/2018/08/21/5b7b905c40483.png)
 
-
-
-
 # 许可
+
 MIT

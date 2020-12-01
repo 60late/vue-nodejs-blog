@@ -36,7 +36,8 @@ app.use(bodyParser.urlencoded({limit:'50mb',extended: true }))
 //使用expressJWT对路由进行token验证
 let secretOrPrivateKey = "mykey"  //私钥 校验token时要使用
 app.use(expressJWT({
-    secret: secretOrPrivateKey   
+    secret: secretOrPrivateKey,
+    algorithms:['HS256']   
 }).unless({
     path: ['/api/user/login','/api/user/getInfo','/ueditor/ue']  //这里可以设置保护路由，login就不用进行token验证
 }));

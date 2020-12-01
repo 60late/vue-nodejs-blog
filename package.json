@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "commander": "^3.0.1",
+    "commander": "^3.0.2",
     "less": "^3.7.1",
     "less-loader": "^4.1.0",
     "mockjs": "^1.0.1-beta3",

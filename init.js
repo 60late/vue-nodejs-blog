@@ -22,8 +22,11 @@ program
 
 if (program.init) {
   console.log('正在执行初始化程序，请勿关闭窗口...')
+  console.log('前端依赖安装中……')
   excute('npm install','','前端依赖安装')
+  console.log('后端依赖安装中……')
   excute('npm install','server','后端依赖安装')
+  console.log('初始化数据库中')
   excute('node database.js','server','数据库初始化')
   console.log('初始化完毕')
 }
