@@ -4,7 +4,6 @@ Alphabet的个人博客项目  Ver0.0
 
 # 前言
 
-项目预览： <http://hyj.60late.com/>
 
 本项目是一个前后端分离的vue+nodejs博客项目，一路踩坑边学边用摸爬滚打终于初步上线
 
